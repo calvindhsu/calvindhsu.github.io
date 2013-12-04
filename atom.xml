@@ -4,7 +4,7 @@
   <title><![CDATA[visual output]]></title>
   <link href="http://calvindhsu.github.io/atom.xml" rel="self"/>
   <link href="http://calvindhsu.github.io/"/>
-  <updated>2013-12-04T13:43:27-08:00</updated>
+  <updated>2013-12-04T15:06:39-08:00</updated>
   <id>http://calvindhsu.github.io/</id>
   <author>
     <name><![CDATA[Calvin Hsu]]></name>
@@ -23,7 +23,7 @@
 <h3>The problem</h3>
 
 <p>Consider the below output of the Cornell Box Scene:
-<img src="images/posts/2013-12-03/noisy.png" title="Noise and Artifacts" ></p>
+<img src="http://calvindhsu.github.io/images/posts/2013-12-03/noisy.png" title="Noise and Artifacts" ></p>
 
 <p>Some questions I kept asking myself:</p>
 
