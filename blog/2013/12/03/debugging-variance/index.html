@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>visual output</title>
+  <title>Debugging Variance: Mistakes and Lessons - visual output</title>
   <meta name="author" content="Calvin Hsu">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://calvindhsu.github.io/">
+  <link rel="canonical" href="http://calvindhsu.github.io/blog/2013/12/03/debugging-variance/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -65,15 +65,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/12/03/debugging-variance/">Debugging Variance: Mistakes and Lessons</a></h1>
+      <h1 class="entry-title">Debugging Variance: Mistakes and Lessons</h1>
     
     
       <p class="meta">
@@ -91,14 +88,14 @@
 
 <time datetime="2013-12-03T17:40:00-08:00" pubdate data-updated="true">Dec 3<span>rd</span>, 2013</time>
         
-         | <a href="/blog/2013/12/03/debugging-variance/#disqus_thread">Comments</a>
+         | <a href="#disqus_thread">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>My first entry will be dedicated to humbly pointing out some of the fun bugs I&rsquo;ve run into while working on my own path tracer. I didn&rsquo;t find many entries on steps used to debug variance, so I thought I&rsquo;d share my experiences here.</p>
+<div class="entry-content"><p>My first entry will be dedicated to humbly pointing out some of the fun bugs I&rsquo;ve run into while working on my own path tracer. I didn&rsquo;t find many entries on steps used to debug variance, so I thought I&rsquo;d share my experiences here.</p>
 
 <h3>The problem</h3>
 
@@ -313,18 +310,65 @@ condition.</p>
 </ol>
 
 </div>
+
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Calvin Hsu</span></span>
+
+      
+
+
+
+
+
+
+
+
   
 
 
-    </article>
+<time datetime="2013-12-03T17:40:00-08:00" pubdate data-updated="true">Dec 3<span>rd</span>, 2013</time>
+      
+
+<span class="categories">
   
-  <div class="pagination">
+    <a class='category' href='/blog/categories/debugging/'>Debugging</a>, <a class='category' href='/blog/categories/development/'>Development</a>, <a class='category' href='/blog/categories/rendering/'>Rendering</a>
+  
+</span>
+
+
+    </p>
     
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://calvindhsu.github.io/blog/2013/12/03/debugging-variance/" data-via="" data-counturl="http://calvindhsu.github.io/blog/2013/12/03/debugging-variance/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
 </div>
+
+    
+    <p class="meta">
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
 <aside class="sidebar">
   
     <section>
@@ -345,6 +389,7 @@ condition.</p>
   
 </aside>
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
@@ -359,7 +404,10 @@ condition.</p>
       var disqus_shortname = 'visualoutput';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://calvindhsu.github.io/blog/2013/12/03/debugging-variance/';
+        var disqus_url = 'http://calvindhsu.github.io/blog/2013/12/03/debugging-variance/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
