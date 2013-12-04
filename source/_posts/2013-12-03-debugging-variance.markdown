@@ -14,7 +14,7 @@ My first entry will be dedicated to humbly pointing out some of the fun bugs I'v
 ### The problem
 
 Consider the below output of the Cornell Box Scene:
-{% img images/posts/2013-12-03/noisy.png Noise and Artifacts %}
+{% img /images/posts/2013-12-03/noisy.png Noise and Artifacts %}
 
 Some questions I kept asking myself:
 
