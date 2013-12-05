@@ -1,0 +1,295 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Champs: Battlegrounds - visual output</title>
+  <meta name="author" content="Calvin Hsu">
+
+  
+  <meta name="description" content="Champs: Battlegrounds Official Site Champs was a project that I was fortunate to receive the opportunity of driving and architecting the technical &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://calvindhsu.github.io/projects/champs.html">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="visual output" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans+Caption:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+<!-- Load jQuery -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    jQuery.noConflict(); // ender.js conflicts with jQuery
+</script>
+ 
+<!-- Load FancyBox -->
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" />
+<script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+ 
+<!-- Fix FancyBox style for OctoPress -->
+<style type="text/css">
+  .fancybox-wrap { position: fixed !important; }
+  .fancybox-opened {
+    -webkit-border-radius: 4px !important;
+       -moz-border-radius: 4px !important;
+            border-radius: 4px !important;
+  }
+  .fancybox-close, .fancybox-prev span, .fancybox-next span {
+    background-color: transparent !important;
+    border: 0 !important;
+  }
+</style>
+
+ 
+<!-- Custom Scripts -->
+<script language="Javascript" type="text/javascript">
+    // ender.js gobbles jQuery's ready event: Use ender.js $ instead
+    $(document).ready(function() {
+                    jQuery(".fancybox").fancybox();
+                        });
+</script>
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">visual output</a></h1>
+  
+    <h2>journey of a graphics enthusiast</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:calvindhsu.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/about">About</a></li>
+  <li><a href="/projects">Projects</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://www.linkedin.com/in/calvinhsu">Linkedin</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article role="article">
+  
+  <header>
+    <h1 class="entry-title">Champs: Battlegrounds</h1>
+    
+  </header>
+  
+  <p><a href="http://www.champsbattlegrounds.com">Official Site</a></p>
+
+<ul class="gallery">
+<li><a href="/images/projects/champs/army-management.jpg" class="fancybox" rel="gallery-3502d1d0d8663da5e850614df73e45c8" title="Army management"><img src="/images/projects/champs/army-management_m.jpg" alt="Army management" /></a></li><li><a href="/images/projects/champs/damage.jpg" class="fancybox" rel="gallery-3502d1d0d8663da5e850614df73e45c8" title="Damage # animation, bright effects"><img src="/images/projects/champs/damage_m.jpg" alt="Damage # animation, bright effects" /></a></li><li><a href="/images/projects/champs/targeting.jpg" class="fancybox" rel="gallery-3502d1d0d8663da5e850614df73e45c8" title="Targetable area"><img src="/images/projects/champs/targeting_m.jpg" alt="Targetable area" /></a></li>
+</ul>
+
+
+<p>Champs was a project that I was fortunate to receive the opportunity of driving and architecting the technical development of the game logic and client from start to finish. It was exciting turning point for Quark Games, original game design, and the company&rsquo;s first 3D, real-time game.</p>
+
+<p>In short, it&rsquo;s a real-time multiplayer tactics game where players collect and train armies of &ldquo;Champs&rdquo; each with a wide range of unique abilities to defeat their opponents. Each Champ has a fixed pool of energy which constantly regenerates, and determines how often moves are executed. Terrain and positioning are critical, as certain tiles give energy regeneration bonuses.</p>
+
+<h4>Stats</h4>
+
+<ul>
+<li>Company: Quark Games</li>
+<li>Time: 11 months (09/12 &ndash; 08/13)</li>
+<li>Technologies: C#, Unity3D, Websockets</li>
+<li>Platform: iOS, Android</li>
+<li>Role: Client Lead Engineer</li>
+<li>Team size: 2-5 (including myself!)</li>
+</ul>
+
+
+<h4>Game logic engine</h4>
+
+<p>This started as part of the client and ran on the device, but as the scope of the project expanded we decided to factor out the game logic into a separate component that could be run on both server and client (for offline play).</p>
+
+<p>Player input, and set-up commands are received by the library and processed at a 30ms tick. On the server this meant having a thread per game, with multiplexing connections. Output commands would contain the minimum necessary information: ids for visual outcomes, commands reporting critical game state (position, health, energy). This would give game designers the greatest flexibility to tweaking. Since the client also included this library it could leverage shared code for predictive rule evaluation (i.e. evaluating whether a command was valid).</p>
+
+<p>Configuration for units was placed in a human-readable JSON format. Then loaded to instantiate classes with those config values. I wrote a lot of scripts to grab effect ids and animation timings out of Unity3D prefabs and to serialize them to be able to be read by our game logic engine. This allowed for us to leverage the tools the tech artist was familiar with and not disrupt their workflow</p>
+
+<h4>UI</h4>
+
+<p>A lot of Champs is UI, or I should say a lot of any game is UI. Especially if your client team consists of 3.5 people and you need to implement everything from in-game UI to store, manage army, settings menus, etc.</p>
+
+<h4>HP/Energy Bars</h4>
+
+<p>Surprisingly problematic, since the naive NGUI implementation gets you into trouble. We had 12 of them on the screen, and the time spent in CPU layout was eating up 20-30% of our frame time. NGUI only uses vertex positions and colors, it&rsquo;s a dynamic mesh. If you implement hp/energy bars&#8217; outlines/dividers, alpha pulsing sprites with each line being a quad: you end up with a dense amount of geometry that&rsquo;s constantly being laid-out on CPU and being submitted to the GPU.</p>
+
+<p>The solution is obvious: use shaders! Use an NGUI quad, but override it&rsquo;s material to use your own shader. This turned 26 quads per Champ into 2 (which were static each frame). Pre-generate the dynamic outline/dividers once as a texture, use 1D textures with UV coordinates to draw the bar, blend in the fragment shader. Now our iPad FPS goes from 23 to the vsync&#8217;ed 30.</p>
+
+<h4>Targetable area tinting</h4>
+
+<p>We wanted to highlight which tiles were valid by tinting the rest of the screen. The naive implementation was to tint every material and unit that wasn&rsquo;t in the highlighted area. Besides bloating all of the other shaders and the extra time determining whehter any object in the scene should be tinted, this was so expensive that it brought our frame rate to a crawl.</p>
+
+<p>The solution was to use screen space shaders. GPUs should have a stencil buffer&hellip;let&rsquo;s render the tiles we want highlighted into it. Unfortunately, Unity 4.1 actually didn&rsquo;t expose a stencil buffer, and rendering into a render texture was costly. So I exploited the fact that the majority of elements static elements in our scene didn&rsquo;t use alpha blending: encode the tint value (0 or 1) into the alpha channel, and reinterpret it while tweening the tint fade.</p>
+
+<h4>AI</h4>
+
+<p>I can&rsquo;t beat the AI I programmed for Champs, which means I&rsquo;m either really bad at the game I developed (partially true I admit) or it&rsquo;s a precursor of Robot overlords. One of our talented game designers came up with the design of the AI that would use a heuristic scoring system to weigh potential actions. For moves, this meant evaluating the value of a tile&rsquo;s map position and weighing them against the damage score of a particular ability.</p>
+
+<p>The system is able to compute the &ldquo;offensive value&rdquo; and &ldquo;vulnerability&rdquo; of any space given current enemy positions (in a tactics game units aren&rsquo;t constantly moving, this heuristic was roughly correct). This took into account for all range rules, terrain bonuses, pairwise damage between units. This was weighted against the damage values relative to the target&rsquo;s health: giving more weight to weaker units, but not enough to make them constantly give chase.</p>
+
+<p>A big part in optimizing the system was providing tools for the designers. I wrote an AI heatmap that would display each of the values computed for tiles, giving the designer a visual indication as to why the AI was making certain decisions, and allowing him to tweak weights on certain values per unit: leading to more aggressive or defensive behaviors.</p>
+
+<p>Eventually we added heuristics for computing damage from triggering environment effects (i.e. pushing an enemy into mines), using remote detonate, planting mines/obstacles. The AI became so good a board went up with the score of people in the office vs AI. Most of them were losses :)</p>
+
+<h4>Android Workarounds</h4>
+
+<p>I have to put this in a category on our own, since the hacks to fix some issues in the very fragmented device space were crazy, but we were able to get the game to ship without graphical glitches!</p>
+
+<p><strong>Alpha Channel and Stencil Buffer Woes</strong></p>
+
+<p>Well when we got to preparing Android for ship the alpha hack fell apart. It turns out if you use an alpha enabled (32-bit) display buffer for some devices, pressing the volume controls or when the OS displays an overlay, the game would flicker like crazy. Obviously there was a problem with Unity&rsquo;s render context and the OS&rsquo;s screen compositing.</p>
+
+<p>We were lucky that Unity 4.2 had shipped and exposed stencil buffer support, nice! Now I can do this cleanly and get rid of any alpha hacks. Turns out as well that still, some devices don&rsquo;t expose a stencil buffer (I believe the pattern was that stencil was only supported for devices that exposed the OES_packed_depth_stencil extension). Necessarily, my only option for those devices was to take the performance hit and use a render texture.</p>
+
+<p><strong>Texture corruption when returning from a notification</strong></p>
+
+<p>We hit a Unity bug where returning to the UnityPlayerActivity would cause our app to lose it&rsquo;s OpenGL context resulting in full texture corruption. I suspected it was because for some reason it was trying to launch a new instance, or that we weren&rsquo;t passing the right flags back. By luck and guessing I changed the launch Intent&rsquo;s class to the UnityPlayerNativeActivity and I set some flags which logs show was overriden, but that fixed the issue!</p>
+
+<h4>Build Automation and Tools</h4>
+
+<p>One of the things about working on a small team is the need to stay efficient. That means automate as much tasks as necessary, so you can focus on engineering and not on getting builds done. At Quark we focused a lot of efforts on creating a 1 command build script from Unity to Xcode archive + ipa, and then putting them onto a continuous integration &ldquo;server&rdquo; (i.e. extra macbook pro sitting on an empty desk ;) ) where QA could pick up builds.</p>
+
+<p>Eventually we got the script to automatically increment version #, push the commit to the release branch, and print out the release notes with links to the github pull requests.</p>
+
+  
+    <footer>
+      
+      
+        <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://calvindhsu.github.io/projects/champs.html" data-via="" data-counturl="http://calvindhsu.github.io/projects/champs.html" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+      
+    </footer>
+  
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/12/05/project-reflections/">Project Reflections</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/03/debugging-variance/">Debugging Variance: Mistakes and Lessons</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Calvin Hsu -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>. Design by <a href="http://octopressthemes.com">Octopress Themes</a>.</span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'visualoutput';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://calvindhsu.github.io/projects/champs.html';
+        var disqus_url = 'http://calvindhsu.github.io/projects/champs.html';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

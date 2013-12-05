@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Game Development | visual output]]></title>
+  <link href="http://calvindhsu.github.io/blog/categories/game-development/atom.xml" rel="self"/>
+  <link href="http://calvindhsu.github.io/"/>
+  <updated>2013-12-05T02:14:08-08:00</updated>
+  <id>http://calvindhsu.github.io/</id>
+  <author>
+    <name><![CDATA[Calvin Hsu]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Project Reflections]]></title>
+    <link href="http://calvindhsu.github.io/blog/2013/12/05/project-reflections/"/>
+    <updated>2013-12-05T02:01:09-08:00</updated>
+    <id>http://calvindhsu.github.io/blog/2013/12/05/project-reflections</id>
+    <content type="html"><![CDATA[<p>I&rsquo;ve finally gotten around to documenting some of the work I&rsquo;ve done for recent projects. It&rsquo;s been a helpful exercise to reflect on some of the process and decisions I&rsquo;ve made.</p>
+
+<p>At a glance looking back at my accomplishments seem small, I guess because they&rsquo;ve already been solved! When I review the process of solving it, I can appreciate that those problems were quite difficult when I started and I can derive some confidence that I&rsquo;m actually learning something :)</p>
+
+<p>Here are two project reflections, now linked from the project page.</p>
+
+<ul>
+<li><a href="projects/champs.html">Champs: Battlegrounds</a></li>
+<li><a href="projects/spbr.html">Physically Based Renderer</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

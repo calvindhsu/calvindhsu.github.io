@@ -9,7 +9,8 @@
   <meta name="author" content="Calvin Hsu">
 
   
-  <meta name="description" content="Projects Personal Physically Based Path Tracer (Fall 2013) Scene acknowledgements: Crytek Sponza Atrium scene is modeled by Frank Meinl. Scene data &hellip;">
+  <meta name="description" content="Projects QuarkGames Champs: Battlegrounds
+A real-time tactics game that I lead development on from prototype to ship. Personal Physically Based Path &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -107,59 +108,26 @@
     
   </header>
   
-  <h1>Personal</h1>
+  <h2>QuarkGames</h2>
 
-<h3>Physically Based Path Tracer (Fall 2013)</h3>
+<p><a href="/projects/champs.html">Champs: Battlegrounds</a>
+A real-time tactics game that I lead development on from prototype to ship.</p>
 
 <ul class="gallery">
-<li><a href="/images/projects/spbr/sponza-day.png" class="fancybox" rel="gallery-45cfac6242b04d0af0002b22813fbb4b" title=""><img src="/images/projects/spbr/sponza-day_m.png" alt="" /></a></li><li><a href="/images/projects/spbr/sponza-night.png" class="fancybox" rel="gallery-45cfac6242b04d0af0002b22813fbb4b" title=""><img src="/images/projects/spbr/sponza-night_m.png" alt="" /></a></li><li><a href="/images/projects/spbr/spheres-close.png" class="fancybox" rel="gallery-45cfac6242b04d0af0002b22813fbb4b" title=""><img src="/images/projects/spbr/spheres-close_m.png" alt="" /></a></li><li><a href="/images/projects/spbr/spheres-front.png" class="fancybox" rel="gallery-45cfac6242b04d0af0002b22813fbb4b" title=""><img src="/images/projects/spbr/spheres-front_m.png" alt="" /></a></li>
+<li><a href="/images/projects/champs/army-management.jpg" class="fancybox" rel="gallery-3502d1d0d8663da5e850614df73e45c8" title="Army management"><img src="/images/projects/champs/army-management_m.jpg" alt="Army management" /></a></li><li><a href="/images/projects/champs/damage.jpg" class="fancybox" rel="gallery-3502d1d0d8663da5e850614df73e45c8" title="Damage # animation, bright effects"><img src="/images/projects/champs/damage_m.jpg" alt="Damage # animation, bright effects" /></a></li><li><a href="/images/projects/champs/targeting.jpg" class="fancybox" rel="gallery-3502d1d0d8663da5e850614df73e45c8" title="Targetable area"><img src="/images/projects/champs/targeting_m.jpg" alt="Targetable area" /></a></li>
 </ul>
 
 
-<p><em>Scene acknowledgements: Crytek Sponza Atrium scene is modeled by Frank Meinl. Scene data obtained from <a href="http://graphics.cs.williams.edu/data/meshes.xml">Morgan Mcguire</a></em></p>
+<h2>Personal</h2>
 
-<p>A project I started with a friend to do some heavy graphics programming from scratch and later continued on my own. We started by reading <a href="http://www.pbrt.org">Physically Based Rendering (PBRT)</a> by Matt Pharr and Greg Humphreys, the standard reference for realistic imaging.</p>
+<p><a href="/projects/spbr.html">Physically Based Path Tracer</a> CPU/GPU path tracer that implements techniques from recent research.</p>
 
-<p>Technologies: C++11, CMake, CUDA.
-Platform: Linux</p>
-
-<h4>Features</h4>
-
-<p><strong>Acceleration Structure: SBVH Split Bounding Volume Hierarchy</strong></p>
-
-<p>A problem we saw was that our BVH implementation was only accelerating very uniformly tessellated scenes. I.e. like the teapot or the Stanford dragon. However, Sponza atrium and other scenes are more realistic, and it would be good practice to be able to handle those scenes efficiently.</p>
-
-<p>The previous object split BVH took way too long to even get one 1 sample per pixel for a 640x480 image. After SBVH was implemented this pass took on the order of 20s, I could finally see an interactive preview and generate some images!</p>
-
-<p>References: <a href="http://www.nvidia.com/docs/IO/77714/sbvh.pdf">Stich &lsquo;09</a></p>
-
-<p><strong>CPU/GPU Wavefront Formulation</strong></p>
-
-<p>As the first step to building a GPU path tracer, I decided to rework my renderer to process many paths in parallel. I was lucky enough to attend a talk by Tero Karras at SIGGRAPH&#8217;13 that describe the wavefront formulation for path tracing. This approach seemed to make a lot of sense: extend all paths by 1 ray/bounce at a time and group similar operations together in parallel, resulting in execution coherence.</p>
-
-<p>As a first step I kept most of my CPU code and only ray traversals GPU accelerated. This was a good bit of work already to transform BVH structures into a gpu-friendly format, and also to be able to unwrap the renderer loop of processing 1 path many bounces, to many paths 1 bounce.</p>
-
-<p>In the end using the gpu even just for ray traversals brought down the render time for the 720p Sponza scene from 9hr single threaded CPU implementation to 2hr wavefront implementation.</p>
-
-<p>References:</p>
-
-<ul>
-<li><a href="https://research.nvidia.com/publication/megakernels-considered-harmful-wavefront-path-tracing-gpus">Laine Karras &lsquo;13</a></li>
-<li><a href="http://www.nvidia.com/object/nvidia_research_pub_011.html">Aila Laine &lsquo;09</a></li>
+<ul class="gallery">
+<li><a href="/images/projects/spbr/sponza-day.png" class="fancybox" rel="gallery-7581264377b8d0b42f23d692f3e69270" title="Crytek Sponza Environment + Directional light"><img src="/images/projects/spbr/sponza-day_m.png" alt="Crytek Sponza Environment + Directional light" /></a></li><li><a href="/images/projects/spbr/sponza-night.png" class="fancybox" rel="gallery-7581264377b8d0b42f23d692f3e69270" title="Crytek Sponza 18 point lights, 1 directional moon-light"><img src="/images/projects/spbr/sponza-night_m.png" alt="Crytek Sponza 18 point lights, 1 directional moon-light" /></a></li><li><a href="/images/projects/spbr/spheres-close.png" class="fancybox" rel="gallery-7581264377b8d0b42f23d692f3e69270" title="Cornell Box 1 point light"><img src="/images/projects/spbr/spheres-close_m.png" alt="Cornell Box 1 point light" /></a></li>
 </ul>
 
 
-<p><strong>Efficiency features</strong></p>
 
-<p>The following were more for own sanity while developing and debugging. Part of the problem in building an offline renderer is that you would waste all this time waiting for your image to come out, when really your camera was positioned incorrectly or your lights weren&rsquo;t bright enough.</p>
-
-<p><strong>Progressive preview:</strong> loop over all pixels with 1 sample instead of each pixel with all samples. Measure time between processing batches of samples, if 100ms has elapsed display the current raster to the screen.</p>
-
-<p><strong>Blender scene format:</strong> I integrated, then contributed to the <a href="http://github.com/assimp">Open Asset Importer</a>. It served my purposes well for allowing me to place camera, lights and repositioning them. However, it&rsquo;s quickly reached it&rsquo;s limits for describing the materials and more complicated lights, that I will likely need to move to using my own exporter or custom importer. Either way, scene set-up should never happen via text file</p>
-
-<p><strong>Partial scene reloading:</strong> building the SBVH for large scenes can be costly, and isn&rsquo;t necessary if you just move lights around, change brightness, or adjust the camera. I added a button to reload those parts and restart rendering without rebuilding the bvh. This allowed for more minor adjustments.</p>
-
-<p><strong>Pixel debugging:</strong> If there was a weird pixel in the output, it was easy enough to report the position of the pixel, which could be used to limit the render window from command line while running in a debugger. This allowed me to pinpoint problems without running across all of the other computation.</p>
 
   
     <footer>
@@ -176,6 +144,10 @@ Platform: Linux</p>
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/12/05/project-reflections/">Project Reflections</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/12/03/debugging-variance/">Debugging Variance: Mistakes and Lessons</a>
