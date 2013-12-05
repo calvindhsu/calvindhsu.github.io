@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Development | visual output]]></title>
   <link href="http://calvindhsu.github.io/blog/categories/development/atom.xml" rel="self"/>
   <link href="http://calvindhsu.github.io/"/>
-  <updated>2013-12-05T03:04:40-08:00</updated>
+  <updated>2013-12-05T03:14:31-08:00</updated>
   <id>http://calvindhsu.github.io/</id>
   <author>
     <name><![CDATA[Calvin Hsu]]></name>
@@ -22,8 +22,9 @@
 
 <h3>The problem</h3>
 
-<p>Consider the below output of the Cornell Box Scene:
-<img src="/images/posts/2013-12-03/noisy.png" title="Noise and Artifacts" ></p>
+<p>Consider the below output of the Cornell Box Scene:</p>
+
+<p><a href="/images/posts/2013-12-03/noisy.png" class="fancybox" title="Noise and Artifacts "><img src="/images/posts/2013-12-03/noisy_m.png" alt="Noise and Artifacts " /></a></p>
 
 <p>Some questions I kept asking myself:</p>
 
@@ -110,14 +111,14 @@ for (int i = 0; i &lt; kNumSamples; ++i)
 
 <h3>Realization</h3>
 
-<p><img src="/images/posts/2013-12-03/sampling_broken.png" title="Broken" ></p>
+<p><a href="/images/posts/2013-12-03/sampling_broken.png" class="fancybox" title="Large gaping holes, flower petal pattern "><img src="/images/posts/2013-12-03/sampling_broken_m.png" alt="Large gaping holes, flower petal pattern " /></a></p>
 
 <p>Wow, so happy that I discovered this. All the samples are clumping around this flower petal pattern, and it&rsquo;s the same as our light pattern in the picture.</p>
 
 <p><code>ConcentricSampleDisk</code> should take 2 floats ranging from [0, 1] and return them uniformly distributed in a 2D disk. This is based off of <a href="http://psgraphics.blogspot.com/2011/01/improved-code-for-concentric-map.html">Peter Shirley&rsquo;s original unit disk mapping</a>, which takes 4 triangle quadrants of a unit square to map to 45 degree slices of the unit disk. Our mapping was motivated by ideas similar to the simpler code posted by Shirley (divide into 2 quadrants), except that we decided to use tau as % half-lengths instead.</p>
 
 <p>``` c++ Incorrect sampling
-inline Point2 ConcentricSampleDisk(const float u1, const float u2)
+Point2 ConcentricSampleDisk(const float u1, const float u2)
 {</p>
 
 <pre><code>const float x = 2 * u1 - 1;
@@ -171,11 +172,11 @@ condition.</p>
 
 <p>The new sampling code produces a uniformly distributed result.</p>
 
-<p><img src="/images/posts/2013-12-03/sampling_correct.png" title="Uniform!" ></p>
+<p><a href="/images/posts/2013-12-03/sampling_correct.png" class="fancybox" title="Uniform! "><img src="/images/posts/2013-12-03/sampling_correct_m.png" alt="Uniform! " /></a></p>
 
 <p>Which subsequently removed the noise and light artifacts</p>
 
-<p><img src="/images/posts/2013-12-03/correct.png" title="Smooth!" ></p>
+<p><a href="/images/posts/2013-12-03/correct.png" class="fancybox" title="Smooth! "><img src="/images/posts/2013-12-03/correct_m.png" alt="Smooth! " /></a></p>
 
 <h3>Takeaways</h3>
 

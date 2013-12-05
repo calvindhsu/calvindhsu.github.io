@@ -4,7 +4,7 @@
   <title><![CDATA[visual output]]></title>
   <link href="http://calvindhsu.github.io/atom.xml" rel="self"/>
   <link href="http://calvindhsu.github.io/"/>
-  <updated>2013-12-05T03:04:40-08:00</updated>
+  <updated>2013-12-05T03:14:31-08:00</updated>
   <id>http://calvindhsu.github.io/</id>
   <author>
     <name><![CDATA[Calvin Hsu]]></name>
@@ -41,8 +41,9 @@
 
 <h3>The problem</h3>
 
-<p>Consider the below output of the Cornell Box Scene:
-<img src="http://calvindhsu.github.io/images/posts/2013-12-03/noisy.png" title="Noise and Artifacts" ></p>
+<p>Consider the below output of the Cornell Box Scene:</p>
+
+<p><a href="http://calvindhsu.github.io/images/posts/2013-12-03/noisy.png" class="fancybox" title="Noise and Artifacts "><img src="http://calvindhsu.github.io/images/posts/2013-12-03/noisy_m.png" alt="Noise and Artifacts " /></a></p>
 
 <p>Some questions I kept asking myself:</p>
 
@@ -153,7 +154,7 @@ others. If the distribution was uniform, the color should be even.</p>
 
 <h3>Realization</h3>
 
-<p><img src="http://calvindhsu.github.io/images/posts/2013-12-03/sampling_broken.png" title="Broken" ></p>
+<p><a href="http://calvindhsu.github.io/images/posts/2013-12-03/sampling_broken.png" class="fancybox" title="Large gaping holes, flower petal pattern "><img src="http://calvindhsu.github.io/images/posts/2013-12-03/sampling_broken_m.png" alt="Large gaping holes, flower petal pattern " /></a></p>
 
 <p>Wow, so happy that I discovered this. All the samples are clumping around this flower petal pattern, and it&rsquo;s the same as our light pattern in the picture.</p>
 
@@ -186,7 +187,7 @@ others. If the distribution was uniform, the color should be even.</p>
 <span class='line-number'>25</span>
 <span class='line-number'>26</span>
 <span class='line-number'>27</span>
-</pre></td><td class='code'><pre><code class='c++'><span class='line'><span class="kr">inline</span> <span class="n">Point2</span> <span class="n">ConcentricSampleDisk</span><span class="p">(</span><span class="k">const</span> <span class="kt">float</span> <span class="n">u1</span><span class="p">,</span> <span class="k">const</span> <span class="kt">float</span> <span class="n">u2</span><span class="p">)</span>
+</pre></td><td class='code'><pre><code class='c++'><span class='line'><span class="n">Point2</span> <span class="n">ConcentricSampleDisk</span><span class="p">(</span><span class="k">const</span> <span class="kt">float</span> <span class="n">u1</span><span class="p">,</span> <span class="k">const</span> <span class="kt">float</span> <span class="n">u2</span><span class="p">)</span>
 </span><span class='line'><span class="p">{</span>
 </span><span class='line'>    <span class="k">const</span> <span class="kt">float</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">u1</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
 </span><span class='line'>    <span class="k">const</span> <span class="kt">float</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">u2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
@@ -237,11 +238,11 @@ condition.</p>
 
 <p>The new sampling code produces a uniformly distributed result.</p>
 
-<p><img src="http://calvindhsu.github.io/images/posts/2013-12-03/sampling_correct.png" title="Uniform!" ></p>
+<p><a href="http://calvindhsu.github.io/images/posts/2013-12-03/sampling_correct.png" class="fancybox" title="Uniform! "><img src="http://calvindhsu.github.io/images/posts/2013-12-03/sampling_correct_m.png" alt="Uniform! " /></a></p>
 
 <p>Which subsequently removed the noise and light artifacts</p>
 
-<p><img src="http://calvindhsu.github.io/images/posts/2013-12-03/correct.png" title="Smooth!" ></p>
+<p><a href="http://calvindhsu.github.io/images/posts/2013-12-03/correct.png" class="fancybox" title="Smooth! "><img src="http://calvindhsu.github.io/images/posts/2013-12-03/correct_m.png" alt="Smooth! " /></a></p>
 
 <h3>Takeaways</h3>
 
