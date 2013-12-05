@@ -14,5 +14,5 @@ At a glance looking back at my accomplishments seem small, I guess because they'
 
 Here are two project reflections, now linked from the project page.
 
-* [Champs: Battlegrounds](projects/champs.html)
-* [Physically Based Renderer](projects/spbr.html)
+* [Champs: Battlegrounds](/projects/champs.html)
+* [Physically Based Renderer](/projects/spbr.html)
