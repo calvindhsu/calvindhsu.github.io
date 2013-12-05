@@ -9,7 +9,7 @@
   <meta name="author" content="Calvin Hsu">
 
   
-  <meta name="description" content=" Projects Physically Based Path Tracer Recent Posts Debugging Variance: Mistakes and Lessons ">
+  <meta name="description" content="Projects Personal Physically Based Path Tracer (Fall 2013) Scene acknowledgements: Crytek Sponza Atrium scene is modeled by Frank Meinl. Scene data &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -29,6 +29,39 @@
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans+Caption:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+<!-- Load jQuery -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    jQuery.noConflict(); // ender.js conflicts with jQuery
+</script>
+ 
+<!-- Load FancyBox -->
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" />
+<script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+ 
+<!-- Fix FancyBox style for OctoPress -->
+<style type="text/css">
+  .fancybox-wrap { position: fixed !important; }
+  .fancybox-opened {
+    -webkit-border-radius: 4px !important;
+       -moz-border-radius: 4px !important;
+            border-radius: 4px !important;
+  }
+  .fancybox-close, .fancybox-prev span, .fancybox-next span {
+    background-color: transparent !important;
+    border: 0 !important;
+  }
+</style>
+
+ 
+<!-- Custom Scripts -->
+<script language="Javascript" type="text/javascript">
+    // ender.js gobbles jQuery's ready event: Use ender.js $ instead
+    $(document).ready(function() {
+                    jQuery(".fancybox").fancybox();
+                        });
+</script>
 
   
 
@@ -58,6 +91,7 @@
 <ul class="main-navigation">
   <li><a href="/">Blog</a></li>
   <li><a href="/about">About</a></li>
+  <li><a href="/projects">Projects</a></li>
   <li><a href="/blog/archives">Archives</a></li>
   <li><a href="http://www.linkedin.com/in/calvinhsu">Linkedin</a></li>
 </ul>
@@ -73,7 +107,59 @@
     
   </header>
   
-  <h3>Physically Based Path Tracer</h3>
+  <h1>Personal</h1>
+
+<h3>Physically Based Path Tracer (Fall 2013)</h3>
+
+<ul class="gallery">
+<li><a href="/images/projects/spbr/sponza-day.png" class="fancybox" rel="gallery-45cfac6242b04d0af0002b22813fbb4b" title=""><img src="/images/projects/spbr/sponza-day_m.png" alt="" /></a></li><li><a href="/images/projects/spbr/sponza-night.png" class="fancybox" rel="gallery-45cfac6242b04d0af0002b22813fbb4b" title=""><img src="/images/projects/spbr/sponza-night_m.png" alt="" /></a></li><li><a href="/images/projects/spbr/spheres-close.png" class="fancybox" rel="gallery-45cfac6242b04d0af0002b22813fbb4b" title=""><img src="/images/projects/spbr/spheres-close_m.png" alt="" /></a></li><li><a href="/images/projects/spbr/spheres-front.png" class="fancybox" rel="gallery-45cfac6242b04d0af0002b22813fbb4b" title=""><img src="/images/projects/spbr/spheres-front_m.png" alt="" /></a></li>
+</ul>
+
+
+<p><em>Scene acknowledgements: Crytek Sponza Atrium scene is modeled by Frank Meinl. Scene data obtained from <a href="http://graphics.cs.williams.edu/data/meshes.xml">Morgan Mcguire</a></em></p>
+
+<p>A project I started with a friend to do some heavy graphics programming from scratch and later continued on my own. We started by reading <a href="http://www.pbrt.org">Physically Based Rendering (PBRT)</a> by Matt Pharr and Greg Humphreys, the standard reference for realistic imaging.</p>
+
+<p>Technologies: C++11, CMake, CUDA.
+Platform: Linux</p>
+
+<h4>Features</h4>
+
+<p><strong>Acceleration Structure: SBVH Split Bounding Volume Hierarchy</strong></p>
+
+<p>A problem we saw was that our BVH implementation was only accelerating very uniformly tessellated scenes. I.e. like the teapot or the Stanford dragon. However, Sponza atrium and other scenes are more realistic, and it would be good practice to be able to handle those scenes efficiently.</p>
+
+<p>The previous object split BVH took way too long to even get one 1 sample per pixel for a 640x480 image. After SBVH was implemented this pass took on the order of 20s, I could finally see an interactive preview and generate some images!</p>
+
+<p>References: <a href="http://www.nvidia.com/docs/IO/77714/sbvh.pdf">Stich &lsquo;09</a></p>
+
+<p><strong>CPU/GPU Wavefront Formulation</strong></p>
+
+<p>As the first step to building a GPU path tracer, I decided to rework my renderer to process many paths in parallel. I was lucky enough to attend a talk by Tero Karras at SIGGRAPH&#8217;13 that describe the wavefront formulation for path tracing. This approach seemed to make a lot of sense: extend all paths by 1 ray/bounce at a time and group similar operations together in parallel, resulting in execution coherence.</p>
+
+<p>As a first step I kept most of my CPU code and only ray traversals GPU accelerated. This was a good bit of work already to transform BVH structures into a gpu-friendly format, and also to be able to unwrap the renderer loop of processing 1 path many bounces, to many paths 1 bounce.</p>
+
+<p>In the end using the gpu even just for ray traversals brought down the render time for the 720p Sponza scene from 9hr single threaded CPU implementation to 2hr wavefront implementation.</p>
+
+<p>References:</p>
+
+<ul>
+<li><a href="https://research.nvidia.com/publication/megakernels-considered-harmful-wavefront-path-tracing-gpus">Laine Karras &lsquo;13</a></li>
+<li><a href="http://www.nvidia.com/object/nvidia_research_pub_011.html">Aila Laine &lsquo;09</a></li>
+</ul>
+
+
+<p><strong>Efficiency features</strong></p>
+
+<p>The following were more for own sanity while developing and debugging. Part of the problem in building an offline renderer is that you would waste all this time waiting for your image to come out, when really your camera was positioned incorrectly or your lights weren&rsquo;t bright enough.</p>
+
+<p><strong>Progressive preview:</strong> loop over all pixels with 1 sample instead of each pixel with all samples. Measure time between processing batches of samples, if 100ms has elapsed display the current raster to the screen.</p>
+
+<p><strong>Blender scene format:</strong> I integrated, then contributed to the <a href="http://github.com/assimp">Open Asset Importer</a>. It served my purposes well for allowing me to place camera, lights and repositioning them. However, it&rsquo;s quickly reached it&rsquo;s limits for describing the materials and more complicated lights, that I will likely need to move to using my own exporter or custom importer. Either way, scene set-up should never happen via text file</p>
+
+<p><strong>Partial scene reloading:</strong> building the SBVH for large scenes can be costly, and isn&rsquo;t necessary if you just move lights around, change brightness, or adjust the camera. I added a button to reload those parts and restart rendering without rebuilding the bvh. This allowed for more minor adjustments.</p>
+
+<p><strong>Pixel debugging:</strong> If there was a weird pixel in the output, it was easy enough to report the position of the pixel, which could be used to limit the render window from command line while running in a debugger. This allowed me to pinpoint problems without running across all of the other computation.</p>
 
   
     <footer>
