@@ -14,7 +14,8 @@ My first entry will be dedicated to humbly pointing out some of the fun bugs I'v
 ### The problem
 
 Consider the below output of the Cornell Box Scene:
-{% img /images/posts/2013-12-03/noisy.png Noise and Artifacts %}
+
+{% photo /images/posts/2013-12-03/noisy.png default Noise and Artifacts %}
 
 Some questions I kept asking myself:
 
@@ -92,14 +93,14 @@ Taking a lot of samples is necessary to see a pattern (esp at 512x512 pixels), b
 
 ### Realization
 
-{% img /images/posts/2013-12-03/sampling_broken.png Broken %}
+{% photo /images/posts/2013-12-03/sampling_broken.png default Large gaping holes, flower petal pattern %}
 
 Wow, so happy that I discovered this. All the samples are clumping around this flower petal pattern, and it's the same as our light pattern in the picture.
 
 `ConcentricSampleDisk` should take 2 floats ranging from [0, 1] and return them uniformly distributed in a 2D disk. This is based off of [Peter Shirley's original unit disk mapping](http://psgraphics.blogspot.com/2011/01/improved-code-for-concentric-map.html), which takes 4 triangle quadrants of a unit square to map to 45 degree slices of the unit disk. Our mapping was motivated by ideas similar to the simpler code posted by Shirley (divide into 2 quadrants), except that we decided to use tau as % half-lengths instead.
 
 ``` c++ Incorrect sampling
-inline Point2 ConcentricSampleDisk(const float u1, const float u2)
+Point2 ConcentricSampleDisk(const float u1, const float u2)
 {
     const float x = 2 * u1 - 1;
     const float y = 2 * u2 - 1;
@@ -147,11 +148,11 @@ The solution is to divide the two numbers. I hadn't realized it until this point
 
 The new sampling code produces a uniformly distributed result.
 
-{%img /images/posts/2013-12-03/sampling_correct.png Uniform! %}
+{% photo /images/posts/2013-12-03/sampling_correct.png default Uniform! %}
 
 Which subsequently removed the noise and light artifacts
 
-{%img /images/posts/2013-12-03/correct.png Smooth! %}
+{% photo /images/posts/2013-12-03/correct.png default Smooth! %}
 
 ### Takeaways
 
