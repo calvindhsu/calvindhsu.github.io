@@ -10,8 +10,8 @@ My name is Calvin Hsu (pronounced like shoe), I've always been interested in usi
 
 Interests:
 
-* Realtime/Offline Rendering
 * Game development
+* Realtime/Offline Rendering
 * GPU programming (OpenGL, OpenCL, CUDA)
 
-This blog is to document my journey and thoughts.
+This site is built with [Octopress](http://www.octopress.org) and uses Devin Weaver's excellent [photos_tag plugin](https://gist.github.com/sukima/2631877).
