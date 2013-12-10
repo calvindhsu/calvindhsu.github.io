@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: GPGPU | visual output]]></title>
-  <link href="http://calvindhsu.github.io/blog/categories/gpgpu/atom.xml" rel="self"/>
+  <title><![CDATA[Category: CUDA | visual output]]></title>
+  <link href="http://calvindhsu.github.io/blog/categories/cuda/atom.xml" rel="self"/>
   <link href="http://calvindhsu.github.io/"/>
   <updated>2013-12-09T17:19:33-08:00</updated>
   <id>http://calvindhsu.github.io/</id>
