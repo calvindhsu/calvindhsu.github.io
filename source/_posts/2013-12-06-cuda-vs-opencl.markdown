@@ -5,7 +5,9 @@ date: 2013-12-06 14:01:48 -0800
 comments: true
 categories: 
 - GPGPU
-- Rendering
+- Debugging
+- OpenCL
+- CUDA
 - Tools
 ---
 
