@@ -7,6 +7,7 @@ categories:
  - Rendering
  - Debugging
  - Development
+keywords: "debugging variance, debugging noise, random sampling, path tracing, physically based rendering, monte carlo"
 ---
 
 My first entry will be dedicated to humbly pointing out some of the fun bugs I've run into while working on my own path tracer. I didn't find many entries on steps used to debug variance, so I thought I'd share my experiences here.

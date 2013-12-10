@@ -9,6 +9,7 @@ categories:
 - OpenCL
 - CUDA
 - Tools
+keywords: "opencl vs cuda, cuda tools, cuda development, opencl development, GPGPU comparison, GPGPU tools, GPGPU debugging"
 ---
 
 I had to make a choice as to what GPGPU API to use for my GPU path tracer. I read sources like [CUDA Vs OpenCL: Which should I use](http://wiki.tiker.net/CudaVsOpenCL) and decided initially that OpenCL would be the right choice: support an open standard which would see wider and wider adoption and gain experience with the API. However, I found along the way, the path of least resistance brought me to CUDA.
