@@ -1,24 +1,147 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[visual output]]></title>
-  <link href="http://calvindhsu.github.io/atom.xml" rel="self"/>
-  <link href="http://calvindhsu.github.io/"/>
-  <updated>2013-12-09T17:14:10-08:00</updated>
-  <id>http://calvindhsu.github.io/</id>
-  <author>
-    <name><![CDATA[Calvin Hsu]]></name>
-    
-  </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>CUDA vs OpenCL Development Experience on an NVIDIA GPU - visual output</title>
+  <meta name="author" content="Calvin Hsu">
 
   
-  <entry>
-    <title type="html"><![CDATA[CUDA vs OpenCL Development Experience on an NVIDIA GPU]]></title>
-    <link href="http://calvindhsu.github.io/blog/2013/12/06/cuda-vs-opencl/"/>
-    <updated>2013-12-06T14:01:48-08:00</updated>
-    <id>http://calvindhsu.github.io/blog/2013/12/06/cuda-vs-opencl</id>
-    <content type="html"><![CDATA[<p>I had to make a choice as to what GPGPU API to use for my GPU path tracer. I read sources like <a href="http://wiki.tiker.net/CudaVsOpenCL">CUDA Vs OpenCL: Which should I use</a> and decided initially that OpenCL would be the right choice: support an open standard which would see wider and wider adoption and gain experience with the API. However, I found along the way, the path of least resistance brought me to CUDA.</p>
+  <meta name="description" content="I had to make a choice as to what GPGPU API to use for my GPU path tracer. I read sources like CUDA Vs OpenCL: Which should I use and decided &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://calvindhsu.github.io/blog/2013/12/06/cuda-vs-opencl/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="visual output" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans+Caption:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+<!-- Load jQuery -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    jQuery.noConflict(); // ender.js conflicts with jQuery
+</script>
+ 
+<!-- Load FancyBox -->
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" />
+<script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+ 
+<!-- Fix FancyBox style for OctoPress -->
+<style type="text/css">
+  .fancybox-wrap { position: fixed !important; }
+  .fancybox-opened {
+    -webkit-border-radius: 4px !important;
+       -moz-border-radius: 4px !important;
+            border-radius: 4px !important;
+  }
+  .fancybox-close, .fancybox-prev span, .fancybox-next span {
+    background-color: transparent !important;
+    border: 0 !important;
+  }
+</style>
+
+ 
+<!-- Custom Scripts -->
+<script language="Javascript" type="text/javascript">
+    // ender.js gobbles jQuery's ready event: Use ender.js $ instead
+    $(document).ready(function() {
+                    jQuery(".fancybox").fancybox();
+                        });
+</script>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46211723-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">visual output</a></h1>
+  
+    <h2>journey of a game and graphics developer</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:calvindhsu.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/about">About</a></li>
+  <li><a href="/projects">Projects</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="http://www.linkedin.com/in/calvinhsu">Linkedin</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">CUDA vs OpenCL Development Experience on an NVIDIA GPU</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-06T14:01:48-08:00" pubdate data-updated="true">Dec 6<span>th</span>, 2013</time>
+        
+         | <a href="#disqus_thread">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>I had to make a choice as to what GPGPU API to use for my GPU path tracer. I read sources like <a href="http://wiki.tiker.net/CudaVsOpenCL">CUDA Vs OpenCL: Which should I use</a> and decided initially that OpenCL would be the right choice: support an open standard which would see wider and wider adoption and gain experience with the API. However, I found along the way, the path of least resistance brought me to CUDA.</p>
 
 <p>Big caveat here: I approached this choice as something to use for my personal, learning project with no need to ship a commercial product.</p>
 
@@ -369,252 +492,161 @@
 <h2>Conclusion</h2>
 
 <p>If you have NVIDIA hardware, and you&rsquo;re looking to have a smooth, more well supported development experience, and you&rsquo;re not concerned about deploying/distributing to users who don&rsquo;t have NVIDIA hardware, use CUDA! In the meantime, I&rsquo;m hoping to see that OpenCL receive more support from NVIDIA.</p>
-]]></content>
-  </entry>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
   
-  <entry>
-    <title type="html"><![CDATA[Project Reflections]]></title>
-    <link href="http://calvindhsu.github.io/blog/2013/12/05/project-reflections/"/>
-    <updated>2013-12-05T02:01:09-08:00</updated>
-    <id>http://calvindhsu.github.io/blog/2013/12/05/project-reflections</id>
-    <content type="html"><![CDATA[<p>I&rsquo;ve finally gotten around to documenting some of the work I&rsquo;ve done for recent projects. It&rsquo;s been a helpful exercise to reflect on some of the process and decisions I&rsquo;ve made.</p>
 
-<p>At a glance looking back at my accomplishments seem small, I guess because they&rsquo;ve already been solved! When I review the process of solving it, I can appreciate that those problems were quite difficult when I started and I can derive some confidence that I&rsquo;m actually learning something :)</p>
+<span class="byline author vcard">Posted by <span class="fn">Calvin Hsu</span></span>
 
-<p>Here are two project reflections, now linked from the project page.</p>
+      
 
-<ul>
-<li><a href="http://calvindhsu.github.io/projects/champs.html">Champs: Battlegrounds</a></li>
-<li><a href="http://calvindhsu.github.io/projects/spbr.html">Physically Based Renderer</a></li>
-</ul>
 
-]]></content>
-  </entry>
+
+
+
+
+
+
   
-  <entry>
-    <title type="html"><![CDATA[Debugging Variance: Mistakes and Lessons]]></title>
-    <link href="http://calvindhsu.github.io/blog/2013/12/03/debugging-variance/"/>
-    <updated>2013-12-03T17:40:00-08:00</updated>
-    <id>http://calvindhsu.github.io/blog/2013/12/03/debugging-variance</id>
-    <content type="html"><![CDATA[<p>My first entry will be dedicated to humbly pointing out some of the fun bugs I&rsquo;ve run into while working on my own path tracer. I didn&rsquo;t find many entries on steps used to debug variance, so I thought I&rsquo;d share my experiences here.</p>
-
-<h3>The problem</h3>
-
-<p>Consider the below output of the Cornell Box Scene:</p>
-
-<p><a href="http://calvindhsu.github.io/images/posts/2013-12-03/noisy.png" class="fancybox" title="Noise and Artifacts "><img src="http://calvindhsu.github.io/images/posts/2013-12-03/noisy_m.png" alt="Noise and Artifacts " /></a></p>
-
-<p>Some questions I kept asking myself:</p>
-
-<ol>
-<li>This is rendered with 1024 samples per pixel. Why is it so noisy?</li>
-<li>This scene is simple and has dirac delta BRDFs (mirror), and plain old lambert. Why is it so noisy?</li>
-<li>While interesting, where did that &ldquo;flower pedal&rdquo; light pattern on the ground come from?</li>
-</ol>
 
 
-<!-- more -->
+<time datetime="2013-12-06T14:01:48-08:00" pubdate data-updated="true">Dec 6<span>th</span>, 2013</time>
+      
 
-
-<h3>Hypotheses and suspicions</h3>
-
-<p>Initially I thought that the variance was caused by a bug in the integrator,
-that I wasn&rsquo;t computing the pdf value correctly and properly weighting the
-sample. Or it was a problem with the material evaluation and I wasn&rsquo;t computing
-the bounce direction correctly.</p>
-
-<p>Then I began to suspect the concentric uniform disk sampling code. At the start
-of the project my partner and I thought it best to implement some of the
-low-level routines ourselves to foster our understanding. We thought we could
-write a simpler routine that would be clearer to us instead of borrowing the
-code that was readily available. However, we hadn&rsquo;t tested it&rsquo;s correctness&hellip;
-<em>it must be right</em> was our flaw.</p>
-
-<p>We ignored it, and proceeded to generate many images. They all appeared too
-noisy for the amount of samples we were taking. Being inexperienced, I thought,
-maybe this was some efficiency issue, if we take more samples the noise will go
-away.  However, published results kept showing cleaner images for the same
-scene in &lt;= the # of samples per pixel.</p>
-
-<h3>Debugging with pictures</h3>
-
-<p>The best way to debug random sampling is with a picture, not with some routine that
-measures the distribution. The human visual system is <em>superior at recognizing patterns</em>&hellip; given that you
-feed a picture without too much information, after all the final image wasn&rsquo;t
-helpful in pinpointing the problem.</p>
-
-<p>Using alpha blending helped me to see if certain points overlapped more than
-others. If the distribution was uniform, the color should be even.</p>
-
-<figure class='code'><figcaption><span>Plot the points with 10% alpha blending</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-</pre></td><td class='code'><pre><code class='c++'><span class='line'><span class="kt">void</span> <span class="n">PlotPoint</span><span class="p">(</span><span class="kt">int</span> <span class="n">raster_width</span><span class="p">,</span> <span class="kt">int</span> <span class="n">raster_height</span><span class="p">,</span> <span class="k">const</span> <span class="n">Point2</span> <span class="o">&amp;</span><span class="n">input</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">Spectrum</span><span class="o">&gt;</span> <span class="o">&amp;</span><span class="n">pixels</span><span class="p">)</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="kt">int</span> <span class="n">plot_width</span> <span class="o">=</span> <span class="n">raster_width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
-</span><span class='line'>    <span class="kt">int</span> <span class="n">plot_height</span> <span class="o">=</span> <span class="n">raster_height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="n">Point2</span> <span class="n">p</span> <span class="o">=</span> <span class="n">input</span><span class="p">;</span>
-</span><span class='line'>    <span class="n">p</span><span class="p">.</span><span class="n">u</span> <span class="o">=</span> <span class="mf">0.5f</span> <span class="o">*</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">u</span> <span class="o">+</span> <span class="mf">1.f</span><span class="p">);</span>
-</span><span class='line'>    <span class="n">p</span><span class="p">.</span><span class="n">v</span> <span class="o">=</span> <span class="mf">0.5f</span> <span class="o">*</span> <span class="p">(</span><span class="n">p</span><span class="p">.</span><span class="n">v</span> <span class="o">+</span> <span class="mf">1.f</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kt">int</span> <span class="n">x</span> <span class="o">=</span> <span class="n">roundf</span><span class="p">(</span><span class="n">plot_width</span> <span class="o">*</span> <span class="n">p</span><span class="p">.</span><span class="n">u</span> <span class="o">+</span> <span class="mf">0.5f</span> <span class="o">*</span> <span class="p">(</span><span class="n">raster_width</span> <span class="o">-</span> <span class="n">plot_width</span><span class="p">));</span>
-</span><span class='line'>    <span class="kt">int</span> <span class="n">y</span> <span class="o">=</span> <span class="n">roundf</span><span class="p">(</span><span class="n">plot_height</span> <span class="o">*</span> <span class="n">p</span><span class="p">.</span><span class="n">v</span> <span class="o">+</span> <span class="mf">0.5f</span> <span class="o">*</span> <span class="p">(</span><span class="n">raster_height</span> <span class="o">-</span> <span class="n">plot_height</span><span class="p">));</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="n">raster_width</span> <span class="o">||</span> <span class="n">y</span> <span class="o">&gt;=</span> <span class="n">raster_height</span><span class="p">)</span>
-</span><span class='line'>    <span class="p">{</span>
-</span><span class='line'>        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">format</span><span class="p">(</span><span class="s">&quot;%f, %f&quot;</span><span class="p">)</span> <span class="o">%</span> <span class="n">p</span><span class="p">.</span><span class="n">u</span> <span class="o">%</span> <span class="n">p</span><span class="p">.</span><span class="n">v</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
-</span><span class='line'>        <span class="k">return</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="n">Spectrum</span> <span class="o">&amp;</span><span class="n">target</span> <span class="o">=</span> <span class="n">pixels</span><span class="p">[</span><span class="n">x</span> <span class="o">+</span> <span class="n">raster_height</span> <span class="o">*</span> <span class="n">y</span><span class="p">];</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="n">Spectrum</span> <span class="n">color</span><span class="p">(</span><span class="mf">1.f</span><span class="p">,</span> <span class="mf">0.f</span><span class="p">,</span> <span class="mf">0.f</span><span class="p">);</span>
-</span><span class='line'>    <span class="kt">float</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.1f</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="n">target</span> <span class="o">=</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">color</span> <span class="o">+</span> <span class="p">(</span><span class="mf">1.f</span> <span class="o">-</span> <span class="n">alpha</span><span class="p">)</span> <span class="o">*</span> <span class="n">target</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Taking a lot of samples is necessary to see a pattern (esp at 512x512 pixels), but too many and the image with coagulate into a solid blob</p>
-
-<figure class='code'><figcaption><span>Take 1M samples</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='c++'><span class='line'><span class="k">const</span> <span class="kt">int</span> <span class="n">kNumSamples</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">20</span><span class="p">;</span>
-</span><span class='line'><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">kNumSamples</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="n">PlotPoint</span><span class="p">(</span><span class="n">kWidth</span><span class="p">,</span> <span class="n">kHeight</span><span class="p">,</span> <span class="n">ConcentricSampleDisk</span><span class="p">(</span><span class="n">rng</span><span class="p">.</span><span class="n">RandomFloat</span><span class="p">(),</span> <span class="n">rng</span><span class="p">.</span><span class="n">RandomFloat</span><span class="p">()),</span> <span class="n">pixels</span><span class="p">);</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<h3>Realization</h3>
-
-<p><a href="http://calvindhsu.github.io/images/posts/2013-12-03/sampling_broken.png" class="fancybox" title="Large gaping holes, flower petal pattern "><img src="http://calvindhsu.github.io/images/posts/2013-12-03/sampling_broken_m.png" alt="Large gaping holes, flower petal pattern " /></a></p>
-
-<p>Wow, so happy that I discovered this. All the samples are clumping around this flower petal pattern, and it&rsquo;s the same as our light pattern in the picture.</p>
-
-<p><code>ConcentricSampleDisk</code> should take 2 floats ranging from [0, 1] and return them uniformly distributed in a 2D disk. This is based off of <a href="http://psgraphics.blogspot.com/2011/01/improved-code-for-concentric-map.html">Peter Shirley&rsquo;s original unit disk mapping</a>, which takes 4 triangle quadrants of a unit square to map to 45 degree slices of the unit disk. Our mapping was motivated by ideas similar to the simpler code posted by Shirley (divide into 2 quadrants), except that we decided to use tau as % half-lengths instead.</p>
-
-<figure class='code'><figcaption><span>Incorrect sampling</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-</pre></td><td class='code'><pre><code class='c++'><span class='line'><span class="n">Point2</span> <span class="n">ConcentricSampleDisk</span><span class="p">(</span><span class="k">const</span> <span class="kt">float</span> <span class="n">u1</span><span class="p">,</span> <span class="k">const</span> <span class="kt">float</span> <span class="n">u2</span><span class="p">)</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="k">const</span> <span class="kt">float</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">u1</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
-</span><span class='line'>    <span class="k">const</span> <span class="kt">float</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">u2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mf">0.f</span> <span class="o">&amp;&amp;</span> <span class="n">y</span> <span class="o">==</span> <span class="mf">0.f</span><span class="p">)</span>
-</span><span class='line'>        <span class="k">return</span> <span class="n">Point2</span><span class="p">(</span><span class="mf">0.f</span><span class="p">,</span> <span class="mf">0.f</span><span class="p">);</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kt">float</span> <span class="n">tau</span><span class="p">;</span>
-</span><span class='line'>    <span class="k">const</span> <span class="kt">float</span> <span class="n">r_x</span> <span class="o">=</span> <span class="n">fabs</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
-</span><span class='line'>    <span class="k">const</span> <span class="kt">float</span> <span class="n">r_y</span> <span class="o">=</span> <span class="n">fabs</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
-</span><span class='line'>    <span class="kt">float</span> <span class="n">radius</span><span class="p">;</span>
-</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="n">r_x</span> <span class="o">&gt;</span> <span class="n">r_y</span><span class="p">)</span>
-</span><span class='line'>    <span class="p">{</span>
-</span><span class='line'>        <span class="k">const</span> <span class="kt">float</span> <span class="n">tau_start</span> <span class="o">=</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mf">0.f</span> <span class="o">?</span> <span class="o">-</span><span class="mf">0.25f</span> <span class="o">:</span> <span class="mf">0.75f</span><span class="p">;</span>
-</span><span class='line'>        <span class="n">tau</span> <span class="o">=</span> <span class="n">u2</span> <span class="o">*</span> <span class="mf">0.5f</span> <span class="o">+</span> <span class="n">tau_start</span><span class="p">;</span>
-</span><span class='line'>        <span class="n">radius</span> <span class="o">=</span> <span class="n">r_x</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="k">else</span>
-</span><span class='line'>    <span class="p">{</span>
-</span><span class='line'>        <span class="k">const</span> <span class="kt">float</span> <span class="n">tau_start</span> <span class="o">=</span> <span class="n">y</span> <span class="o">&gt;=</span> <span class="mf">0.f</span> <span class="o">?</span> <span class="mf">0.25f</span> <span class="o">:</span> <span class="mf">1.25f</span><span class="p">;</span>
-</span><span class='line'>        <span class="n">tau</span> <span class="o">=</span> <span class="n">u1</span> <span class="o">*</span> <span class="mf">0.5f</span> <span class="o">+</span> <span class="n">tau_start</span><span class="p">;</span>
-</span><span class='line'>        <span class="n">radius</span> <span class="o">=</span> <span class="n">r_y</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'>    <span class="k">const</span> <span class="kt">float</span> <span class="n">theta</span> <span class="o">=</span> <span class="n">tau</span> <span class="o">*</span> <span class="n">M_PI</span><span class="p">;</span>
-</span><span class='line'>    <span class="k">return</span> <span class="n">Point2</span><span class="p">(</span><span class="n">radius</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="n">radius</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">);</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>In lines 13, 19 we incorrectly redid this mapping as pick which sample is the
-radius, which determines the tau_start, then use the other sample as the basis for the angle, theta.
-However you&rsquo;ll notice there&rsquo;s an unforeseen dependency here, take the first
-case for instance. If r_x is greater than r_y, then abs(u1) > abs(u2) and then
-the range of values for u2 are strictly less than the abs(length). For this to work
-u2 needs to be able to range from [0, 1], which is impossible given the if
-condition.</p>
-
-<h3>Solution</h3>
-
-<p>The solution is to divide the two numbers. I hadn&rsquo;t realized it until this point, but this is more intuitive and probably is the motivation of the original code: the slope of the triangle maps directly to the angle. So obvious I feel dumb.</p>
-
-<figure class='code'><figcaption><span>Fixed code </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='c++'><span class='line'>    <span class="n">tau</span> <span class="o">=</span> <span class="n">y</span><span class="o">/</span><span class="n">x</span> <span class="o">*</span> <span class="mf">0.5f</span> <span class="o">+</span> <span class="n">tau_start</span><span class="p">;</span>
-</span><span class='line'>    <span class="n">tau</span> <span class="o">=</span> <span class="n">x</span><span class="o">/</span><span class="n">y</span> <span class="o">*</span> <span class="mf">0.5f</span> <span class="o">+</span> <span class="n">tau_start</span><span class="p">;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>The new sampling code produces a uniformly distributed result.</p>
-
-<p><a href="http://calvindhsu.github.io/images/posts/2013-12-03/sampling_correct.png" class="fancybox" title="Uniform! "><img src="http://calvindhsu.github.io/images/posts/2013-12-03/sampling_correct_m.png" alt="Uniform! " /></a></p>
-
-<p>Which subsequently removed the noise and light artifacts</p>
-
-<p><a href="http://calvindhsu.github.io/images/posts/2013-12-03/correct.png" class="fancybox" title="Smooth! "><img src="http://calvindhsu.github.io/images/posts/2013-12-03/correct_m.png" alt="Smooth! " /></a></p>
-
-<h3>Takeaways</h3>
-
-<ol>
-<li>Take the time to write the visualization code for sampling routines. It took so little time and I wish I had done it sooner.</li>
-<li>Reference images/scenes are a must for determining correctness. If I didn&rsquo;t have an idea of what an image with 1024 samples per pixel should look like, I would have a lot harder time convincing myself something was wrong.</li>
-<li>Caution required before I implement someone else&rsquo;s technique, doing it better or making it clearer is not trivial. The context and motivation for each operation is often missing.</li>
-</ol>
-
-]]></content>
-  </entry>
+<span class="categories">
   
-</feed>
+    <a class='category' href='/blog/categories/gpgpu/'>GPGPU</a>, <a class='category' href='/blog/categories/rendering/'>Rendering</a>, <a class='category' href='/blog/categories/tools/'>Tools</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://calvindhsu.github.io/blog/2013/12/06/cuda-vs-opencl/" data-via="" data-counturl="http://calvindhsu.github.io/blog/2013/12/06/cuda-vs-opencl/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/12/05/project-reflections/" title="Previous Post: Project Reflections">&laquo; Project Reflections</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/12/06/cuda-vs-opencl/">CUDA vs OpenCL Development Experience on an NVIDIA GPU</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/05/project-reflections/">Project Reflections</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/03/debugging-variance/">Debugging Variance: Mistakes and Lessons</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Calvin Hsu -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>. Design by <a href="http://octopressthemes.com">Octopress Themes</a>.</span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'visualoutput';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://calvindhsu.github.io/blog/2013/12/06/cuda-vs-opencl/';
+        var disqus_url = 'http://calvindhsu.github.io/blog/2013/12/06/cuda-vs-opencl/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

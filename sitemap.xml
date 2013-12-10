@@ -2,15 +2,19 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://calvindhsu.github.io/blog/2013/12/03/debugging-variance/</loc>
-        <lastmod>2013-12-05T03:12:14-08:00</lastmod>
+        <lastmod>2013-12-09T16:59:05-08:00</lastmod>
     </url>
     <url>
         <loc>http://calvindhsu.github.io/blog/2013/12/05/project-reflections/</loc>
         <lastmod>2013-12-05T11:15:49-08:00</lastmod>
     </url>
     <url>
+        <loc>http://calvindhsu.github.io/blog/2013/12/06/cuda-vs-opencl/</loc>
+        <lastmod>2013-12-09T17:14:09-08:00</lastmod>
+    </url>
+    <url>
         <loc>http://calvindhsu.github.io/</loc>
-        <lastmod>2013-12-05T11:15:49-08:00</lastmod>
+        <lastmod>2013-12-09T17:14:09-08:00</lastmod>
     </url>
     <url>
         <loc>http://calvindhsu.github.io/projects/spbr.html</loc>
@@ -30,6 +34,6 @@
     </url>
     <url>
         <loc>http://calvindhsu.github.io/blog/archives/</loc>
-        <lastmod>2013-12-05T11:15:49-08:00</lastmod>
+        <lastmod>2013-12-09T17:14:09-08:00</lastmod>
     </url>
 </urlset>

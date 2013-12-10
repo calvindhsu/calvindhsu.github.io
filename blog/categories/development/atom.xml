@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Development | visual output]]></title>
   <link href="http://calvindhsu.github.io/blog/categories/development/atom.xml" rel="self"/>
   <link href="http://calvindhsu.github.io/"/>
-  <updated>2013-12-06T12:47:43-08:00</updated>
+  <updated>2013-12-09T17:14:10-08:00</updated>
   <id>http://calvindhsu.github.io/</id>
   <author>
     <name><![CDATA[Calvin Hsu]]></name>
@@ -33,6 +33,9 @@
 <li>This scene is simple and has dirac delta BRDFs (mirror), and plain old lambert. Why is it so noisy?</li>
 <li>While interesting, where did that &ldquo;flower pedal&rdquo; light pattern on the ground come from?</li>
 </ol>
+
+
+<!-- more -->
 
 
 <h3>Hypotheses and suspicions</h3>
