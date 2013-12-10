@@ -23,6 +23,8 @@ Some questions I kept asking myself:
 1. This scene is simple and has dirac delta BRDFs (mirror), and plain old lambert. Why is it so noisy?
 1. While interesting, where did that "flower pedal" light pattern on the ground come from?
 
+<!-- more -->
+
 ### Hypotheses and suspicions
 
 Initially I thought that the variance was caused by a bug in the integrator,
